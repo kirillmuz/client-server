@@ -1,0 +1,12 @@
+.vs/
+WebAPI/bin/
+WebAPI/obj/
+bin/
+obj/
+**/bin/Debug/
+**/bin/Release/
+**/bin/
+**/bin/
+**/obj/
+**/obj/Debug/
+**/obj/Release/

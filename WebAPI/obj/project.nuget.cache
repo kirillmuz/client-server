@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fDyejzmIz/ep1xqjdU2gzSfHxYyxoJCSHOunZLrvSAv5+MgvxjmiLEntOS2zlTpWgXVZnCVJZ70FuZZMAQXoDw==",
+  "dgSpecHash": "/AzaexYWrCS+MXCiExX/i8n0+vjBftTaXJcFkTRqaOsVCpB0i/5gBzrhQzm0Snogw3t+nC3PvBmqTZ5UUK9caQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kiril\\source\\repos\\WebAPI\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\Курс Клиент-сервер\\client-server\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kiril\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kiril\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.10\\microsoft.aspnetcore.authentication.jwtbearer.7.0.10.nupkg.sha512",

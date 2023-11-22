@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.DbContexts;
 using WebAPI.Models.DTO;
@@ -6,6 +7,7 @@ using WebAPI.Models.Employees;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class EmployeesController : ControllerBase
@@ -18,12 +20,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("employees")]
+        [Authorize(Roles = "admin, manager")]
         public IEnumerable<Employee> GetEmployees()
         {
             return _context.Employees.Include(e=>e.WorkExperience).Include(e=>e.Educations).ToList();
         }
 
         [HttpPost("employee")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult CreateEmployee([FromBody]EmployeeRequestDto employeeDto)
         {
             var department = _context.Departments.Include(d=>d.Employees)
@@ -52,6 +56,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("employee")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult UpdateEmployee([FromBody]Employee employee)
         {
             var _employee = _context.Employees.FirstOrDefault(e => e.Id == employee.Id);
@@ -70,6 +75,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("employee")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult DeleteEmployee(int id)
         {
             var _employee = _context.Employees.FirstOrDefault(e => e.Id == id);
@@ -83,6 +89,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("workexperience")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult AddWorkExperience([FromBody]WorkExperienceRequestDto workExperience)
         {
             var _employee = _context.Employees.FirstOrDefault(e => e.Id == workExperience.EmployeeId);
@@ -105,6 +112,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("workexperience")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult DeleteWorkExperience(int id)
         {
             var _workExperience = _context.WorkExperience.FirstOrDefault(we => we.Id == id);
@@ -118,6 +126,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("education")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult AddEducation([FromBody]EducationRequestDto education)
         {
             var _employee = _context.Employees.FirstOrDefault(e => e.Id == education.EmployeeId);
@@ -140,6 +149,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("education")]
+        [Authorize(Roles = "admin, manager")]
         public IActionResult DeleteEducation(int id)
         {
             var _education = _context.Educations.FirstOrDefault(e => e.Id == id);

@@ -1905,11 +1905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kiril\\source\\repos\\WebAPI\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Курс Клиент-сервер\\client-server\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\kiril\\source\\repos\\WebAPI\\WebAPI\\WebAPI.csproj",
+      "projectPath": "C:\\Курс Клиент-сервер\\client-server\\WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\kiril\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kiril\\source\\repos\\WebAPI\\WebAPI\\obj\\",
+      "outputPath": "C:\\Курс Клиент-сервер\\client-server\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kiril\\AppData\\Roaming\\NuGet\\NuGet.Config",

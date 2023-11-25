@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
         [Authorize(Roles = "admin, manager")]
         public IEnumerable<Employee> GetEmployees()
         {
-            return _context.Employees.Include(e=>e.WorkExperience).Include(e=>e.Educations).ToList();
+            return _context.Employees.Include(e=>e.WorkExperience).Include(e=>e.Educations).Include(e => e.UserFiles).ToList();
         }
 
         [HttpPost("employee")]

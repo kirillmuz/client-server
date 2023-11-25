@@ -12,6 +12,7 @@ namespace WebAPI.DbContexts
         public DbSet<Employee> Employees { get; set; } = null;
         public DbSet<Education> Educations { get; set; } = null;
         public DbSet<WorkExperience> WorkExperience { get; set; } = null;
+        public DbSet<UserFile> UserFiles { get; set; } = null;
 
         public ApplicationContext()
         {

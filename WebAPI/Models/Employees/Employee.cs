@@ -13,5 +13,6 @@ namespace WebAPI.Models.Employees
         public DateTime BirthDate { get; set; }
         public List<Education> Educations { get; set; }
         public List<WorkExperience> WorkExperience { get; set; }
+        public List<UserFile> UserFiles { get; set; }
     }
 }

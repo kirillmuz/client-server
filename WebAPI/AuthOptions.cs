@@ -23,7 +23,7 @@ namespace WebAPI
         /// <summary>
         /// Время жизни токена
         /// </summary>
-        public const int LIFETIME = 1;
+        public const int LIFETIME = 480;
 
 
         public static SymmetricSecurityKey GetSymmetricSecurityKey()

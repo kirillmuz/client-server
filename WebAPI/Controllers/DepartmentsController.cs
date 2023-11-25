@@ -25,6 +25,7 @@ namespace WebAPI.Controllers
             return _context.Departments
                 .Include(d => d.Employees).ThenInclude(e => e.Educations)
                 .Include(d => d.Employees).ThenInclude(e => e.WorkExperience)
+                .Include(d => d.Employees).ThenInclude(e => e.UserFiles)
                 .ToList();
         }
 

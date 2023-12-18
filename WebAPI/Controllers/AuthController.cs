@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
@@ -65,7 +66,8 @@ namespace WebAPI.Controllers
             var response = new
             {
                 access_token = encodedJwt,
-                usename = identity.Name
+                usename = identity.Name,
+                role = identity.Claims.FirstOrDefault(c => c.Type.Contains("role"))?.Value
             };
 
             return Ok(JsonConvert.SerializeObject(response));

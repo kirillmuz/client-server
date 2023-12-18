@@ -3,7 +3,19 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using WebAPI;
 
+const string ClienAppCors = "ClienAppCors";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: ClienAppCors, policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -23,6 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddControllers();
+
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
@@ -64,9 +77,10 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
-
+app.UseCors(ClienAppCors);
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.UseSwagger();
 app.UseSwaggerUI(c => {

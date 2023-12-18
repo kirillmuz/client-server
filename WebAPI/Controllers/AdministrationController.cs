@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             };
         }
 
-        [HttpPatch("getusers")]
+        [HttpGet("getusers")]
         [Authorize(Roles = "admin")]
         public IActionResult GetUsers()
         {

@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var users = _context.Users.ToList();
+                var users = _context.Users.ToList().OrderBy(u=>u.Id);
                 return Ok(users);
             }
             catch (Exception ex) {

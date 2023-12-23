@@ -84,17 +84,30 @@ namespace WebAPI.Controllers
 
         [HttpDelete("delete")]
         [Authorize(Roles = "admin, manager")]
-        public IActionResult DeleteFile(string systemName)
+        public IActionResult DeleteFile(int id)
         {
             try
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), FILES_DIRECTORY);
-                if (!Directory.Exists(path))
+                var file = _context.UserFiles.FirstOrDefault(f => f.Id == id);
+                if (file != null)
                 {
-                    return BadRequest("File not found");
+                    var systemName = file.SystemName;
+                    _context.UserFiles.Remove(file);
+                    _context.SaveChanges();
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), FILES_DIRECTORY);
+                    if (!Directory.Exists(path))
+                    {
+                        return BadRequest("File not found in file system");
+                    }
+                    System.IO.File.Delete(Path.Combine(path, systemName));
+
+                    return Ok();
+                } 
+                else
+                {
+                    return BadRequest("File not found in data base");
                 }
-                System.IO.File.Delete(Path.Combine(path, systemName));
-                return Ok();
             }
             catch (Exception ex)
             {

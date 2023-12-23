@@ -34,9 +34,12 @@ namespace WebAPI.Controllers
                 .FirstOrDefault(d => d.Id == employeeDto.DepartmentId);
             if(department != null)
             {
+                var bd = DateTime.Now;
+                DateTime.TryParse(employeeDto.BirthDate, out bd);
+
                 var _employee = _context.Employees.Add(new Employee
                 {
-                    BirthDate = employeeDto.BirthDate,
+                    BirthDate = bd,
                     Email = employeeDto.Email,
                     FirstName = employeeDto.FirstName,
                     LastName = employeeDto.LastName,
@@ -57,12 +60,15 @@ namespace WebAPI.Controllers
 
         [HttpPut("employee")]
         [Authorize(Roles = "admin, manager")]
-        public IActionResult UpdateEmployee([FromBody]Employee employee)
+        public IActionResult UpdateEmployee([FromBody]EmployeeUpdateRequestDto employee)
         {
             var _employee = _context.Employees.FirstOrDefault(e => e.Id == employee.Id);
             if(_employee != null)
             {
-                _employee.BirthDate = employee.BirthDate;
+                var bd = DateTime.Now;
+                DateTime.TryParse(employee.BirthDate, out bd);
+
+                _employee.BirthDate = bd;
                 _employee.Email = employee.Email;
                 _employee.FirstName = employee.FirstName;
                 _employee.LastName = employee.LastName;
